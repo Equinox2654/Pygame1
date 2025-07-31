@@ -1,9 +1,11 @@
 import pygame, sys #imports pygame and sys modules
 from player import player
 from constant import *
+import world
 
 pygame.init()
 player = player()
+colour = (0, 0, 0)
 
 while True:
 
@@ -13,26 +15,28 @@ while True:
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                moving_left = True
+                player.moving_left = True
             if event.key == pygame.K_d:
-                moving_right = True
+                player.moving_right = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
-                moving_left = False
+                player.moving_left = False
             if event.key == pygame.K_d:
-                moving_right = False
+                player.moving_right = False
 
             
     
     #Logic Here
 
-    player.update()
+    player.update(delta)
 
-    display.fill((12, 100, 240)) #fills screen Blue
+    display.fill((146, 244, 255)) #fills screen Blue
 
     #Visuals Here
 
-    player.draw()
+
+    world.draw(display)
+    player.draw(display)
 
     surf = pygame.transform.scale(display, WINDOW_SIZE)
     screen.blit(surf, (0, 0))

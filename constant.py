@@ -6,6 +6,5 @@ display = pygame.Surface(SCREEN_SIZE)
 screen  = pygame.display.set_mode(WINDOW_SIZE)
 clock = pygame.time.Clock()
 delta = clock.tick(60) / 1000.0
-
-moving_right = False
-moving_left = False
+gravity = 40
+TILE_SIZE = 16
